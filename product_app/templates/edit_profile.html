@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+<style media="screen">
+.custom-color{
+  background-color: white;
+}
+</style>
+<body>
+  {% block content %}
+  <div class="py-5 mt-5">
+    <div class="container border  col-md-4 offset-md-4">
+      <div class="login-form  ">
+        <form class="" method="post">
+          {% csrf_token %}
+          <center><img src="{% static 'images\key.png' %}" class="rounded-circle" alt="" width="140" height="140"></center>
+
+          <h1 class="h3 mb-3 font-weight-bold text-center">Create changes here</h1>
+          <h5 class="text-danger text-center">{{error}}</h5>
+          {% if error%}
+          <h6 class="text-danger text-center">Given Username is already taken OR field is Empty.</h6>
+          {% endif%}
+
+          <div class="form-group form-row">
+            <div class="col">
+              {% render_field form.first_name class="form-control" placeholder="FirstName" %}
+            </div>
+            <div class="col">
+              {% render_field form.last_name class="form-control" placeholder="LastName" %}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+            {% render_field form.username class="form-control" placeholder="UserName" %}
+            </div>
+          </div>
+          <div class="form-group">
+            {% render_field form.email class="form-control" placeholder="Email" %}
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+        </form>
+
+        <hr>
+
+        <div class="form-group">
+          Want to change your Account's Password? <a href="{%url 'change_password' %}" class="text-link">Click Here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endblock%}
+</body>
+</html>

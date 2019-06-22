@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+  $('#the-div-that-should-be-refreshed').load('{% url 'hash_rate' %}');
+  refresh();
+});
+
+function refresh(){
+  setTimeout(function(){
+    $('#the-div-that-should-be-refreshed').fadeOut('slow').load('{% url 'hash_rate' %}').fadeIn('slow');
+    refresh();
+  },200);
+}
+</script>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justalign">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <form class="form-inline ">
+              <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                  <span class="input-group-text fas fa-igloo"><a href="#">S</a></span>
+                </div>
+              </div>
+            </form>
+          <ul class="navbar-nav mr-auto px-3">
+          <li class="nav-item">
+            <a class="nav-link" href="my_account.html">My Account</a>
+          </li>
+          <li class="nav-item  ">
+            <a class="nav-link" href="content.html">Browse Idea</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          </ul>
+          <div class="ml-auto ">
+            <a href="#"><button class="btn btn-outline-secondary navbar-btn button-width">Login</button></a>
+            <a href="#"><button class="btn btn-primary navbar-btn button-width font-weight-bold">Submit Post</button></a>
+          </div>
+          </div>
+        </div>
+      </nav>
+
+
+  <body>
+    <div class="jumbotron custom-color my-0">
+      <div class="container col-sm-9 ">
+        <div class="row ">
+          <div class="col-md-9 text-justify ">
+            <div class="" id="auto">
+            </div>
+            <h1>{{details.title}}</h1>
+          </div>
+          <div class="col-md-3  col-sm-offset-2 ">
+            <button class="btn btn-primary btn-block vertical-center font-weight-bold" type="submit">Upvote Idea</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <h6 class="text-muted font-weight-light">{{details.summary}}</h6>
+          </div>
+        </div>
+        <hr>
+        <center><img src="{{details.image.url}}" class="img-fluid"></center>
+        <hr>
+        <p class="text-justify">{{details.body}}</p>
+        <hr>
+        <b></b>
+        <div class="row text-center">
+          <div class="col-md-3">
+            <h6 class="text-muted font-weight-light"> Created On: {{details.pub_date}}</h6>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-muted font-weight-light">Upvote: {{details.upvote}}</h6>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-muted font-weight-light"> Created By: <span class="font-weight-bold">{{details.user}}</span> </h6>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-muted font-weight-light text-danger">REPORT</h6>
+          </div>
+        </div>
+        <hr>
+
+        <form class="" id="mining_starter" method="POST">
+          {% csrf_token %}
+          <h3 class="text-center"> Donate by Mining</h3>
+          <div class="form-group">
+            <label class="">CPU Usage:</label>
+            <select class="form-control" name="selector">
+              <option selected value="100">100%.......Great! Let's use whole power</option>
+              <option value="75">75%.....Ideal for nominal work</option>
+              <option value="50">50%.....Let's share equally</option>
+              <option value="25">25%.......We understand your Priorities ;)</option>
+            </select>
+          </div>
+          <div class="container" id="the-div-that-should-be-refreshed">
+          </div>
+
+        </form>
+
+        <center>
+          <a class="btn btn-primary" href="javascript:{document.getElementById('mining_starter').submit()}">Start Mining</a>
+          <a class="btn btn-primary btn-danger" href="javascript:{document.getElementById('mining_stopper').submit()}" >Stop Mining</a>
+        </center>
+        <form id="mining_stopper" method="POST">
+          {% csrf_token %}
+          <input type="hidden">
+        </form>
+        <hr>
+
+        {% for field in form.visible_fields %}
+        <h4>Comments</h4>
+        <form class="" id="commenter" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            {% render_field field  class="form-control" rows="5" style="resize:none;" placeholder="Add Your Comment..." %}
+          </div>
+        </form>
+
+
+        {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="javascript:{document.getElementById('commenter').submit()}" >Submit Comment</a>
+        {% else %}
+        <a class="btn btn-secondary" href="" >Login to Comment</a>
+        {% endif %}
+
+
+
+        {% endfor %}
+        <hr>
+
+        {% for comment in comments%}
+        <h5 class="mx-2">{{comment.author}}</h5>
+        <p class="mx-2 text-muted" style="margin-top:-10px;"><font size='2'>{{comment.pub_date}}</font></p>
+        <h6 class="mx-5">{{comment.body}}</h6>
+        <hr>
+        {% empty %}
+        <h4>Be the First to Comment</h4>
+        {% endfor %}
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <footer class="bg-dark bottom-margin">
+      <div class="container ">
+        <div class="row justify-content-center font-weight-bold">
+          <div class="col-lg-3 ">
+            <a class="text-muted footer-margin " href="#">Contact Us</a>
+          </div>
+
+          <div class="col-lg-3 ">
+            <a class="text-muted removeunderline" href="#">FAQ</a>
+          </div>
+
+          <div class="col-lg-3">
+            <a class="text-muted" href="#">Terms of Use</a>
+          </div>
+
+          <div class="col-lg-3">
+            <a class="text-muted" href="#">Privacy Policy</a>
+          </div>
+        </div>
+        <p class="text-center text-white text-muted copyright">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+</body>
+</html>
