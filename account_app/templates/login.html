@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+<style media="screen">
+.custom-color{
+  background-color: white;
+}
+
+</style>
+
+<body>
+
+  {% block content %}
+
+  <div class="py-5 mt-5">
+    <div class="container border  col-md-4 offset-md-4">
+      <div class="login-form  ">
+        <form method="POST">
+          {% csrf_token %}
+
+          <center><img src="{% static 'images\key.png' %}" class="rounded-circle" alt="" width="140" height="140"></center>
+
+          <h1 class="h3 mb-3 font-weight-bold text-center">Login to your Account</h1>
+          <h5 class="text-danger text-center">{{error}}</h5>
+          <div class="form-group">
+                  <input type="text" class="form-control" name="username" placeholder="Username" value="" required>
+          </div>
+          <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password" value="" required>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <hr>
+
+          <div class="form-group">
+            Don't have an Account? <a href="{%url 'signup' %}" class="text-link">Create an Account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  {%endblock%}
+
+</body>
+
+</html>
