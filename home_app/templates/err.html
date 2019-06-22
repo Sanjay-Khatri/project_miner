@@ -1,0 +1,37 @@
+
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+<style media="screen">
+
+.error-color{
+  top: 50%;
+}
+
+</style>
+
+
+<body>
+
+
+  <div class="text-center pt-5 mt-5">
+      <h1 class="align-middle" >Oops! ERROR 404</h1>
+      <h2 class="text-danger">Page Not Found</h2>
+      <h6>Sorry, an error has occured, Requested page not found!</h6>
+      <h6>Or your Query is not valid</h6>
+      <a href="{%url 'homepage' %}" class="btn btn-primary">Take Me Home</a>
+  </div>
+
+
+</body>
+</html>

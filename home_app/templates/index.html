@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+<style media="screen">
+.custom-color-carousel{
+  background: #ced2d6;
+}
+
+.grey{
+  filter: grayscale(100%);
+}
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top justalign">
+    <div class="container">
+      <a class="navbar-brand" href="{%url 'homepage' %}"><img src="{% static 'images/key.png' %}" width="30" alt="">
+        <span>Myner</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <form class="form-inline" id="searcher" method="get" action={% url 'search'%} >
+            <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search" name="query">
+              <div class="input-group-append">
+                <a class="input-group-text" href="javascript:{document.getElementById('searcher').submit()}"><img src="{% static 'images\search.svg' %}" width="20" height="20" alt=""></a>
+              </div>
+            </div>
+          </form>
+
+          <ul class="navbar-nav mr-auto px-3">
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'my_account' %}">My Account</a>
+            </li>
+            <li class="nav-item  ">
+              <a class="nav-link" href="{%url 'browse' %}">Browse Idea</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About us</a>
+            </li>
+          </ul>
+          <div class="ml-auto ">
+        {% if user.is_authenticated %}
+        <a href="{%url 'logout' %}"><button class="btn btn-outline-secondary navbar-btn button-width">LogOut</button></a>
+        {% else %}
+        <a href="{%url 'login' %}"><button class="btn btn-outline-secondary navbar-btn button-width">Login</button></a>
+        {% endif %}
+        <a href="{%url 'sumbit' %}"><button class="btn btn-primary navbar-btn button-width font-weight-bold">Submit Post</button></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+{% block content %}
+<div id="myCarousel" class="carousel slide custom-color-carousel" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item  active">
+      <div class="container">
+        <div class="carousel-caption text-left text-dark">
+          <h1>Create your account</h1>
+          <p>Get contribution for your ideas to implement them in real life from other users also get recommendations to imporove. </p>
+          <p><a class="btn btn-lg btn-primary" href={%url 'signup' %} role="button">Sign up today</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item ">
+      <div class="container">
+        <div class="carousel-caption text-dark">
+          <h1>Support idea via Mining</h1>
+          <p>Support your favorite ideas without paying any physical money, anytime, anywhere and Yes! no bank details required.</p>
+          <p><a class="btn btn-lg btn-primary" href="{% url 'FAQ' %}" role="button">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="container">
+        <div class="carousel-caption text-right text-dark">
+          <h1>One more for good measure.</h1>
+          <p>Browse the community to get a glance of ideas submitted by authentic minds also support, share, improve them if you like. </p>
+          <p><a class="btn btn-lg btn-primary" href="{%url 'browse' %}" role="button">Browse Now</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+<div class="jumbotron custom-color text-center py-0">
+  <div class="row py-4 ">
+    <div class="col-lg-4">
+      <img src="{% static 'images\d0a29b8ef14b79c20e78075073ef3154.jpg' %}" class="rounded-circle" alt="" width="140" height="140">
+      <h2>Artificial Intelligence</h2>
+      <p class="text-justify">A.I. helps save us time and scale personalized services like shopping like never before.</p>
+      <p><a class="btn btn-primary" href="browse/Artificial Intelligence/" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img src="{% static 'images\android_logo_PNG26.png' %}" class="rounded-circle" alt="" width="140" height="140">
+      <h2>Android</h2>
+      <p class="text-justify">One of the fastest growing platforms of all time, the little green bot lives in your pocket and does just about anything.</p>
+      <p><a class="btn btn-primary" href="browse/Android/" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img src="{% static 'images\game-logo-mascot-unique-modern_20065-81.jpg' %}" class="grey  rounded-circle" alt="" width="140" height="140">
+      <h2>Gaming</h2>
+      <p class="text-justify">Find something new and exciting to play at home or on the go. Work can wait. Have some fun.</p>
+      <p><a class="btn btn-primary" href="browse/Games/" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+  <div class="row pt-5">
+    <div class="col-lg-4">
+      <img src="{% static 'images\iot_logo_light.jpg' %}" class="grey  rounded-circle" alt="" width="140" height="140">
+      <h2>Internet of Things</h2>
+      <p class="text-justify">Connect everything to the internet, from your home lighting to connected espressos.</p>
+      <p><a class="btn btn-primary" href="browse/Internet of things/" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img src="{% static 'images\kisspng-web-development-responsive-web-design-.jpg' %}" class="grey rounded-circle" alt="" width="140" height="140">
+      <h2>Web Development</h2>
+      <p class="text-justify">Web development is the work involved in developing a web site for the Internet (World Wide Web) or an intranet.</p>
+      <p><a class="btn btn-primary" href="browse/Web App/" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img src="{% static 'images\social-media-platforms-with-their-lo0014.png' %}" class="grey  rounded-circle" alt="" width="140" height="140">
+      <h2>Browse</h2>
+      <p class="text-justify">Explore our site to get through all the post that are uploaded by the community member.</p>
+      <p><a class="btn btn-primary" href="{% url 'browse' %}" role="button">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+</div>
+
+
+
+
+<hr class="featurette-divider">
+{% endblock %}
+<div class="bg-dark footer">
+  <div class="row font-weight-bold">
+    <div class="col-md-3">
+      <a class="text-muted text-center" href="mailto:helpme@myner.com">Contact Us</a>
+    </div>
+    <div class="col-md-3">
+      <a class="text-muted" href="{% url 'FAQ' %}">FAQ</a>
+    </div>
+    <div class="col-md-3">
+      <a class="text-muted"class="text-muted" href="#">Terms of Use</a>
+    </div>
+    <div class="col-md-3">
+      <a class="text-muted" href="#">Privacy Policy</a>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row text-muted">
+    <div class="col">Copyright &copy; product. This site is a legal asset of MYNER Corp. any usage without aknowledge tends to legal action.</div>
+  </div>
+
+</div>
+
+
+
+</body>
+</html>

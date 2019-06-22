@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+
+<body>
+  {% block content %}
+
+
+  <div class="py-5 mt-5 custom-color  ">
+    <div class="container border container_padding text-justify col-md-9">
+
+      <center>      <h3 class="myheading">About Myner</h3>      </center>
+      <hr>
+      <p>It's a website through which user can discover, share, improve and earn for their ideas to implement them in real life. Through this project viewers can donate and support their favorite ideas without using any kind real money as the base of this is the block-chain which could run in the underneath of this project, the viewers who wants to donate can donate them just by providing their computation power for mining the block-chain so the site can pay it in the form of real money. As the site uses computation power for donations thus amount of donation by a specific user can be majorly rely on two factor:</p>
+
+      <ul>
+        <li><span class="font-weight-bold">Hardware specification of the viewer: </span>Basically, it is the hardware specification which primarily determine at what hash rate a viewer could able to donate .Generally it is the CPU who decide computation speed of a computer. Heavy processor like AMD Ryzen 7 & Intel Core i9 processor have better hash rate than Intel Pentium Core and AMD Athlon.</li>
+        <br>
+        <li><span class="font-weight-bold">Amount of time for which viewer can donate: </span>No matter how fast is the processor, it requires time to compute. So we can say the second factor which influence most during donating is the time. </li>
+      </ul>
+
+      <p>This project is developed by three friends during their final year as a major project.</p>
+      <hr>
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading"><span class="text-muted">Sanjay Khatri</span></h2>
+          <p class="lead">pure project ke krta-dhrta yhi h...</p>
+        </div>
+        <div class="col-md-5">
+          <svg width="500" height="500" class="img-fluid rounded">
+            <rect fill="#eee" width="100%" height="100%"></rect>
+          </svg>
+        </div>
+      </div>
+      <hr>
+
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading"><span class="text-muted">Amritesh P. Singh</span></h2>
+          <p class="lead">Inn bhiya ne project ke paper works pr kaam kiya baki sare kam pr apna confirmation diya h.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <svg width="500" height="500" class="img-fluid rounded">
+            <rect fill="#eee" width="100%" height="100%"></rect>
+          </svg>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading"><span class="text-muted">Vinod Choudhary</span></h2>
+          <p class="lead">Inn bhiya ne kuch bhi ni kiya h, pichle project tak to bhiya team ke senior developer ki bhumika me the, pr iss baar nil-batte-sannata h.</p>
+        </div>
+        <div class="col-md-5">
+          <svg width="500" height="500" class="img-fluid rounded">
+            <rect fill="#eee" width="100%" height="100%"></rect>
+          </svg>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  {%endblock%}
+</body>
+</html>

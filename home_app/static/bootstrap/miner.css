@@ -1,0 +1,91 @@
+.carousel-item {
+height: 32rem;
+}
+
+.bullet-style{
+  margin-top: 2.00rem;
+  list-style: none;
+}
+
+.col-lg-3{
+  text-align: center;
+  style: none;
+}
+
+.bottom-margin{
+  padding-top:  .50rem;
+  padding-bottom: .50rem;
+
+}
+
+.featurette-heading {
+  letter-spacing: 0.5rem;
+  margin-top: 7rem;
+  font-size: 50px;
+}
+
+.myheading{
+    letter-spacing: 0.5rem;
+    font-size: 50px;
+}
+
+
+a:hover{
+  text-decoration: none;
+}
+
+.textaligner{
+  text-align: center;
+  margin-right: .75rem;
+  margin-left: .75rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.copyright{
+  margin-top: 1.00rem;
+}
+
+
+
+.button-width{
+  width: 120px;
+}
+
+
+.custom-color{
+  background-color: white;
+}
+
+
+.custom-comment{
+  margin-top: -10px;
+}
+
+
+.img{
+width: 600px;
+height: 300px;
+object-fit: cover;
+}
+
+.custom-detail{
+  padding-top: 32px;
+}
+
+
+.footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+
+
+.min-height{
+  min-height: 30rem;
+}

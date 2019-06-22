@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="{% static 'js\jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js\bootstrap.bundle.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'bootstrap\bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap\miner.css' %}">
+
+
+<body>
+  {% block content %}
+
+
+  <div class="py-5 mt-5 custom-color  ">
+    <div class="container col-md-9 border container_padding text-justify">
+      <center><h3 style="font-size: 35px;">Browser Mining FAQ</h3></center>
+
+
+      <hr>
+
+      <h5>  Q: What is cryptocurrency mining in general?</h5>
+      <h6>  A: It’s process, which involves a lot of calculations, designed to find “proper hashes” in a virtual heap of “all hashes” over a certain period of time. You can compare it to searching a needle in a haystack. Once you (or a pool of users) find the needle, you (or the said pool) receive the reward – the digital coin. If you were all alone, the reward is yours completely. If the pool was involved, the reward is divided between all members depending of percentage of their work in finding this particular needle. The thing is, that over a period of time and amount of miners involved the haystack is automatically growing, while the reward stays the same. So, almost all cryptocurrencies can be mined fast on the start, but mining rapidly becomes very hard and not effective on general purpose CPUs and GPUs.
+      </h6>
+      <hr>
+
+
+      <h5>  Q: What is the browser mining</h5>
+      <h6>  A: It’s a relatively new way of mining, which is done via Javascript + specific libraries right in the browser, without installing and running any applications. It can run on any OS on any device with a modern browser. It uses only CPU for mining and can’t get access to GPU or anything outside browser windows. So it’s very secure and safe. The only downside is a perfomance. The current CoinHive script I use is 45% slower than standalone miner would be on the same CPU.
+      </h6>
+      <hr>
+
+
+      <h5>  Q: Does the browser affects mining speed?</h5>
+      <h6>  A: Yes, it does. In example, recent Firefix Quantum browser shows faster calculation of hashes compared to generic Firefox or Chrome.
+      </h6>
+      <hr>
+
+
+      <h5>  Q: What are those settings and numbers, I don't understand?</h5>
+      <h6>  A: Hashes per second is actually a speed your CPU find those hashes in a new “block”. The larger number you see – the better (for me 🙂
+      <p> Threads relates to your actual cores/threads available. In example, if you have i5 processor, it has 4 cores/4 threads, so if you set the number to 4 – all threads will be used. It’s not recommended to launch more threads than your CPU is capable of.
+      </p>
+      <p>Throttle is a load, at which you want each thread to be running. In example, on i5 CPU, if you set 4 threads and throttle to 50%, the total CPU load will be 50%. If you set 2 threads and 100% throttle – you’ll get the same 50% total load. 4 threads and 100% throttle will load your PC to 100% usage.
+      </p>
+      <p>  By default I set miner to 50% of your cores with 50% throttle for each of them. It’s up to you to use higher settings, if you wish to help me faster.
+      </p>
+      </h6>
+      <hr>
+
+
+      <h5>  Q: Is it profitable at all?</h5>
+      <h6>  A: If my site would have less visitors and the results of the poll showed mixed results – it wouldn’t make sense at all. Only when hundreds of people mine with at least 50% of their CPUs – it can result in a buck or two per day. But it’s good enough anyway, cause it helps me to pay for seedboxes and this server. If suddenly the payout will increase, I will lease more seedboxes, so you’re in win-win anyway 🙂
+      </h6>
+
+      <hr>
+
+      <h5>  Q: How do I know if your miner won't overheat my PC?</h5>
+      <h6>  A: You can use simple and small CoreTemp program to see your system temperature. Add threads and load slowly and see when you have to stop. Anything above 70 degrees (C) is not recommended without proper cooling.
+      </h6>
+      <hr>
+
+
+      <h5>  Q: Can I mine on my phone or tablet?</h5>
+      <h6>  A: You can, but I wouldn’t recommend it. Mining rapidly drains battery and it’s resource is uncoverable, unlike on desktop machines or laptops with direct power feed.
+      </h6>
+
+      <hr>
+
+
+      <h5>  Q: Does browser mining eats my traffic?</h5>
+      <h6>A: Yes, but with a very low rate. In example, if you mine at 100 hashes/second, your total outgoing traffic won’t exceed 20 MB in one hour. And no incoming traffic at any significant rate.
+      </h6>
+
+
+      <hr>
+
+      <h5>  Q: Maybe it would be better for you to upload a standard miner for those, who wants to mine more efficiently?
+      </h5>
+
+      <h6>  A: I will look into this after the browser miner will be completely modified. But yes, that would be more efficient for both you and me. And thanks for the proposal 🙂
+      </h6>
+
+
+
+      <!-- Pagination -->
+
+
+
+    </div>
+    <!-- /.container -->
+  </div>
+
+
+
+
+
+  {%endblock%}
+</body>
+</html>
